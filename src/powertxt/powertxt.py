@@ -1,16 +1,16 @@
 from pathlib import Path
-import constants
+from powertxt.constants import P_MARKS
 
 class PowerTxt:
     """A simple text handling class."""	
         
     # class methods
     def __init__(self, filename):
-        self.path = Path(filename)
-        self.text = self.load()
+        self.load(filename)
         self.lines = self.text.splitlines()
 
-        for p in constants.P_MARKS:
+        text_no_marks = self.text
+        for p in P_MARKS:
             text_no_marks = text_no_marks.replace(p, " ")
         
         self.words = text_no_marks.split()
@@ -24,7 +24,7 @@ class PowerTxt:
     def load(self, filename):
         """Load a new text file."""
         self.path = Path(filename)
-        self.text = self.path.read_text().splitlines()
+        self.text = self.path.read_text()
 
     def save(self):
         """Save the current text file."""
@@ -87,6 +87,6 @@ class PowerTxt:
                     word_count[word] += 1
                 else:
                     word_count[word] = 1
-        
-        return sorted(word_count, key=lambda word_count: word_count[1], reverse=True)[:top]
+                
+        return sorted(word_count.items(), key=lambda x: x[1], reverse=True)[:top]
     

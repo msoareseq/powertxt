@@ -5,7 +5,9 @@ description = "A simple library for text files"
 authors = [
     {name = "Matheus Soares", email = "msoareseq@live.com"},
 ]
-dependencies = []
+dependencies = [
+    "pytest>=8.0.0",
+]
 requires-python = ">=3.8"
 readme = "README.md"
 license = {text = "MIT"}

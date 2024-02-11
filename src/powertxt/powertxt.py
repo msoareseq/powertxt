@@ -78,7 +78,7 @@ class PowerTxt:
         """Get line count from current text."""
         return len(self.lines)
     
-    def get_top_x_words(self, min_lenght = 1):
+    def get_top_x_words(self, top = 10, min_lenght = 1):
         """Get top x words from current text."""
         word_count = {}
         for word in self.words:
@@ -88,5 +88,5 @@ class PowerTxt:
                 else:
                     word_count[word] = 1
         
-        return sorted(word_count.items(), key=lambda x: x[1], reverse=True)
+        return sorted(word_count, key=word_count.get, reverse=True)[:top]
     

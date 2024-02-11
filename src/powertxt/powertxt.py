@@ -88,5 +88,5 @@ class PowerTxt:
                 else:
                     word_count[word] = 1
         
-        return sorted(word_count, key=word_count.get, reverse=True)[:top]
+        return sorted(word_count, key=lambda word_count: word_count[1], reverse=True)[:top]
     
